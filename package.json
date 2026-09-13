@@ -1,0 +1,20 @@
+{
+  "name": "@procoderx/word-counter-app",
+  "version": "1.0.2",
+  "description": "A CLI tool to count words and analyze word frequencies",
+  "main": "lib/counter.js",
+  "type": "module",
+  "bin": {
+    "pcx-word-counter": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "word-counter",
+    "text-analysis"
+  ],
+  "author": "Magan Singh",
+  "license": "ISC"
+}
