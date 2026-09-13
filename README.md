@@ -152,11 +152,11 @@ Example output:
 
 ### npx Usage
 
-![Using @procoderx/word-counter-app with npx](./screenshots/npx-usage.png)
+![Using @procoderx/word-counter-app with npx](https://raw.githubusercontent.com/theprocoderx/pcx-word-counter/main/screenshots/npx-usage.png)
 
 ### Global Installation
 
-![Installing and using @procoderx/word-counter-app globally](./screenshots/global-installation.png)
+![Installing and using @procoderx/word-counter-app globally](https://raw.githubusercontent.com/theprocoderx/pcx-word-counter/main/screenshots/global-installation.png)
 
 ---
 
