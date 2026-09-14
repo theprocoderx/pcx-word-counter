@@ -1,3 +1,29 @@
-file-1.txt
-file-2.txt
-file-3.txt
+# Screenshots and images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Logs
+*.log
+
+# Demo / text files
+*.txt
+*.text
+
+# Development files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Test / coverage output
+coverage/

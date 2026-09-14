@@ -1,16 +1,14 @@
-# @procoderx/word-counter-app
+# @procoderx/pcx-word-counter
 
-> A modular Node.js CLI tool for counting words and generating word-frequency maps directly from the terminal.
+> A lightweight Node.js CLI tool for counting words and generating word-frequency maps directly from the terminal.
 
-[![npm version](https://img.shields.io/npm/v/@procoderx/word-counter-app.svg)](https://www.npmjs.com/package/@procoderx/word-counter-app)
-[![npm downloads](https://img.shields.io/npm/dm/@procoderx/word-counter-app.svg)](https://www.npmjs.com/package/@procoderx/word-counter-app)
-[![License](https://img.shields.io/npm/l/@procoderx/word-counter-app.svg)](https://www.npmjs.com/package/@procoderx/word-counter-app)
-
----
+[![npm version](https://img.shields.io/npm/v/@procoderx/pcx-word-counter.svg)](https://www.npmjs.com/package/@procoderx/pcx-word-counter)
+[![npm downloads](https://img.shields.io/npm/dm/@procoderx/pcx-word-counter.svg)](https://www.npmjs.com/package/@procoderx/pcx-word-counter)
+[![License](https://img.shields.io/npm/l/@procoderx/pcx-word-counter.svg)](https://www.npmjs.com/package/@procoderx/pcx-word-counter)
 
 ## Overview
 
-`@procoderx/word-counter-app` is a Node.js command-line utility for analyzing words in a text file.
+`@procoderx/pcx-word-counter` is a Node.js command-line utility for analyzing words in text files.
 
 It supports two analysis modes:
 
@@ -25,10 +23,25 @@ The CLI is available through the `pcx-word-counter` command.
 
 - **Dual-Mode Analysis** — Generate a complete word-frequency map or count a specific target word.
 - **Node.js CLI** — Run the tool directly from the terminal.
-- **Modern ES Modules** — Uses JavaScript ES Modules with a separation between CLI and core logic.
+- **Modern ES Modules** — Built using JavaScript ES Modules.
+- **Separated Architecture** — Keeps CLI handling separate from core word-counting logic.
 - **Scoped npm Package** — Published under the `@procoderx` npm scope.
 - **npx Support** — Run the package without a global installation.
 - **Global CLI Support** — Install the package globally and use `pcx-word-counter` from anywhere.
+
+---
+
+## Requirements
+
+- Node.js `18+`
+- npm
+
+Check your installed versions:
+
+```bash
+node -v
+npm -v
+```
 
 ---
 
@@ -37,13 +50,13 @@ The CLI is available through the `pcx-word-counter` command.
 Run the package directly with `npx`:
 
 ```bash
-npx @procoderx/word-counter-app ./file-3.txt
+npx @procoderx/pcx-word-counter ./file-3.txt
 ```
 
 To count a specific word:
 
 ```bash
-npx @procoderx/word-counter-app ./file-3.txt the
+npx @procoderx/pcx-word-counter ./file-3.txt the
 ```
 
 ---
@@ -55,7 +68,7 @@ npx @procoderx/word-counter-app ./file-3.txt the
 Install the package globally:
 
 ```bash
-npm install -g @procoderx/word-counter-app
+npm install -g @procoderx/pcx-word-counter
 ```
 
 Then use the CLI:
@@ -69,10 +82,10 @@ pcx-word-counter ./file-3.txt
 Install the package in an existing Node.js project:
 
 ```bash
-npm install @procoderx/word-counter-app
+npm install @procoderx/pcx-word-counter
 ```
 
-Run the CLI locally with:
+Run the CLI locally:
 
 ```bash
 npx pcx-word-counter ./file-3.txt
@@ -86,10 +99,10 @@ npm exec pcx-word-counter -- ./file-3.txt
 
 ### Using npx Without Installation
 
-You can run the published package directly without installing it permanently:
+Run the published package directly:
 
 ```bash
-npx @procoderx/word-counter-app ./file-3.txt
+npx @procoderx/pcx-word-counter ./file-3.txt
 ```
 
 ---
@@ -102,10 +115,10 @@ npx @procoderx/word-counter-app ./file-3.txt
 pcx-word-counter <path-to-file> [target-word]
 ```
 
-| Argument         | Required | Description                                        |
-| ---------------- | -------- | -------------------------------------------------- |
-| `<path-to-file>` | Yes      | Path to the text file to analyze.                  |
-| `[target-word]`  | No       | Specific word whose occurrences should be counted. |
+| Argument         | Required | Description                                       |
+| ---------------- | -------- | ------------------------------------------------- |
+| `<path-to-file>` | Yes      | Path to the text file to analyze                  |
+| `[target-word]`  | No       | Specific word whose occurrences should be counted |
 
 ---
 
@@ -152,11 +165,11 @@ Example output:
 
 ### npx Usage
 
-![Using @procoderx/word-counter-app with npx](https://raw.githubusercontent.com/theprocoderx/pcx-word-counter/main/screenshots/npx-usage.png)
+![Using @procoderx/pcx-word-counter with npx](https://raw.githubusercontent.com/theprocoderx/pcx-word-counter/main/screenshots/npx-usage.png)
 
 ### Global Installation
 
-![Installing and using @procoderx/word-counter-app globally](https://raw.githubusercontent.com/theprocoderx/pcx-word-counter/main/screenshots/global-installation.png)
+![Installing and using @procoderx/pcx-word-counter globally](https://raw.githubusercontent.com/theprocoderx/pcx-word-counter/main/screenshots/global-installation.png)
 
 ---
 
@@ -170,80 +183,179 @@ The application separates command-line handling from the core text-processing lo
 4. Without a target word, a complete word-frequency map is generated.
 5. With a target word, the occurrence count for that word is returned.
 
----
-
-## Project Architecture
+The overall flow:
 
 ```text
-word-counter-app/
-├── bin/
-│   └── index.js                 # CLI entry point and argument handling
-├── lib/
-│   └── counter.js               # Core file-reading and word-counting logic
-├── screenshots/
-│   ├── npx-usage.png            # npx usage screenshot
-│   └── global-installation.png  # Global CLI usage screenshot
-├── package.json                 # Package metadata and CLI configuration
-└── README.md                    # Project documentation
+Terminal Command
+       ↓
+process.argv
+       ↓
+Argument Validation
+       ↓
+Word Counting Logic
+       ↓
+Frequency Map or Target Word Count
+       ↓
+Terminal Output
 ```
 
-### `bin/index.js`
+---
+
+## Project Structure
+
+```text
+pcx-word-counter/
+├── bin/
+│   └── pcx-word-counter.js     # CLI entry point
+│
+├── lib/
+│   └── counter.js              # Core word-counting logic
+│
+├── screenshots/
+│   ├── npx-usage.png           # npx usage screenshot
+│   └── global-installation.png # Global CLI usage screenshot
+│
+├── LICENSE
+├── package.json
+└── README.md
+```
+
+### `bin/pcx-word-counter.js`
 
 The CLI entry point is responsible for:
 
-- Starting the CLI application
-- Reading command-line arguments
-- Validating CLI input
-- Calling the appropriate counting functionality
-- Displaying results in the terminal
+- Starting the CLI application.
+- Reading command-line arguments.
+- Validating CLI input.
+- Calling the appropriate counting functionality.
+- Displaying results in the terminal.
 
 ### `lib/counter.js`
 
 Contains the core application logic responsible for:
 
-- Reading the input file
-- Processing text
-- Counting words
-- Generating word-frequency data
+- Reading the input file.
+- Processing text.
+- Counting words.
+- Generating word-frequency data.
 
 ### `package.json`
 
 Defines:
 
-- Package metadata
-- npm package name and version
-- ES Module configuration
-- CLI binary mapping
-- npm package configuration
+- Package metadata.
+- npm package name and version.
+- ES Module configuration.
+- CLI binary mapping.
+- Package configuration.
 
 ---
 
-## Requirements
+## npm CLI Configuration
 
-- Node.js
-- npm
+The `bin` field exposes the `pcx-word-counter` command:
 
-Check your installed versions:
+```json
+{
+  "bin": {
+    "pcx-word-counter": "bin/pcx-word-counter.js"
+  }
+}
+```
+
+This creates the following relationship:
+
+```text
+pcx-word-counter
+       ↓
+bin/pcx-word-counter.js
+       ↓
+Node.js
+```
+
+The CLI entry file uses a Node.js shebang:
+
+```js
+#!/usr/bin/env node
+```
+
+This allows npm to execute the file directly as a terminal command.
+
+---
+
+## Error Handling
+
+The CLI validates the required file path before processing the input.
+
+File-system errors are reported to the terminal, for example:
+
+```text
+Failed to read file: ENOENT: no such file or directory
+```
+
+Failed operations return a non-zero process exit code.
+
+---
+
+## Development
+
+Clone the repository:
 
 ```bash
-node -v
-npm -v
+git clone https://github.com/theprocoderx/pcx-word-counter.git
 ```
+
+Navigate into the project:
+
+```bash
+cd pcx-word-counter
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Link the package locally:
+
+```bash
+npm link
+```
+
+Test the CLI:
+
+```bash
+pcx-word-counter ./file-3.txt
+```
+
+---
+
+## Future Improvements
+
+Possible future versions may include:
+
+- `--help` option
+- `--version` option
+- Case-insensitive matching
+- Additional output formats
+- Sorting options for frequency maps
+- Support for more text-analysis options
+- Improved CLI error messages
+- Automated tests
 
 ---
 
 ## Repository
 
-Source code and package information:
-
 - **GitHub:** [theprocoderx/pcx-word-counter](https://github.com/theprocoderx/pcx-word-counter)
-- **npm:** [@procoderx/word-counter-app](https://www.npmjs.com/package/@procoderx/word-counter-app)
+- **npm:** [@procoderx/pcx-word-counter](https://www.npmjs.com/package/@procoderx/pcx-word-counter)
 
 ---
 
 ## License
 
-This project is licensed under the **ISC License**.
+This project is licensed under the [ISC License](LICENSE).
 
 ---
 
@@ -254,7 +366,7 @@ This project is licensed under the **ISC License**.
 Building practical Node.js tools and developer-focused projects.
 
 - **Website:** [procoderx.com](https://procoderx.com)
-- **GitHub:** [@TheProCoderX](https://github.com/theprocoderx)
+- **GitHub:** [@theprocoderx](https://github.com/theprocoderx)
 - **LinkedIn:** [ProCoderX](https://www.linkedin.com/in/procoderx)
 - **npm:** [@procoderx](https://www.npmjs.com/~procoderx)
-- **Email:** [procoderxs@gmail.com](mailto:procoderxs@gmail.com)
+- **Email:** procoderxs@gmail.com
